@@ -1,0 +1,19 @@
+{
+  "name": "es6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watch --verbose",
+    "test-debug": "./node_modules/.bin/node-debug ./node_modules/.bin/jest -i --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "jest-cli": "^20.0.3",
+    "node-inspector": "^1.1.1"
+  }
+}
