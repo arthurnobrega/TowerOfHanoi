@@ -79,4 +79,5 @@ describe('valida movimentos automáticos', () => {
     towerOfHanoi.autoMove();
     expect(towerOfHanoi.toArray()).toMatchObject([[3, 4], [], [1, 2]]);
   });
+  
 });

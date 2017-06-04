@@ -29,8 +29,10 @@ class TowerOfHanoi {
   autoMove() {
     if (this.towers[0].disks.length == 4) {
       this.move(0, 1);
-    } else {
+    } else if (this.towers[0].disks.length == 3) {
       this.move(0, 2);
+    } else if (this.towers[2].disks.length == 1) {
+      this.move(1, 2);
     }
   }
 
