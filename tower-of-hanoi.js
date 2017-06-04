@@ -7,38 +7,41 @@ class TowerOfHanoi {
     }
 
     for (let i = numberOfDisks; i > 0; i--) {
-      this.towers[0].disks.unshift(new Disk(i - 1));
+      this.towers[0].disks.unshift(new Disk(i));
     }
   }
 
   move(fromTower, toTower) {
     if (!(fromTower in this.towers)) {
-      return 'invalid';
-    }
-    if (!(fromTower in this.towers)) {
-      return 'invalid';
+      throw new Error('Invalid Movement: Origin tower is out of bounds');
     }
     if (!this.towers[fromTower].hasDisks()) {
-      return 'invalid';
+      throw new Error('Invalid Movement: Origin tower is empty');
     }
-    if (this.towers[toTower].hasDisks() && this.towers[toTower].disks[0].size > this.towers[fromTower].disks[0].size) {
-      return 'invalid';
+    if (this.towers[toTower].hasDisks() && this.towers[toTower].disks[0].size < this.towers[fromTower].disks[0].size) {
+      throw new Error('Invalid Movement: A disk cannot be in the top of a smaller disk');
     }
 
-    let disk = this.towers[fromTower].disks.pop();
+    let disk = this.towers[fromTower].disks.shift();
     this.towers[toTower].disks.unshift(disk);
-
-    return 'valid';
   }
 
-  disksPerTower() {
-    let disks = [];
+  autoMove() {
+    if (this.towers[0].disks.length == 4) {
+      this.move(0, 1);
+    } else {
+      this.move(0, 2);
+    }
+  }
+
+  toArray() {
+    let towers = [];
 
     this.towers.forEach(tower => {
-      disks.push(tower.disks.length);
+      towers.push(tower.toArray());
     });
 
-    return disks;
+    return towers;
   }
 }
 
@@ -49,6 +52,16 @@ class Tower {
 
   hasDisks() {
     return this.disks.length > 0;
+  }
+
+  toArray() {
+    let disks = [];
+
+    this.disks.forEach(disk => {
+      disks.push(disk.size);
+    });
+
+    return disks;
   }
 }
 

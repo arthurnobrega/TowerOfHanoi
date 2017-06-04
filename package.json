@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test-watch": "jest --watch --verbose",
-    "test-debug": "./node_modules/.bin/node-debug ./node_modules/.bin/jest -i --watch"
+    "test-watch": "jest --watch --verbose"
   },
   "author": "",
   "license": "ISC",
